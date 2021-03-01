@@ -1,0 +1,138 @@
+BSO specs
+=========
+
+Version 0.1
+
+Marc Verhagen, November 2005
+
+
+
+1. Editing Tool Platform and Limitation
+---------------------------------------
+
+BSO will be edited through a web browser for the following reasons:
+
+- Catherine feels that the BSO web browser code is much better than
+  the code for the stand-alone python version
+
+- Easily available to everybody. The stand-alone python version
+  depends on a GUI toolkit that does not come standard with our Python
+  version, and perhaps not with others as well.
+
+
+A couple of things will not be possible for simplicity's sake:
+
+- No personal playpen for each editor and no forking of the
+  ontology. When changes are made they are visible to eveyone
+  immediately. Ontology changes will require that the editor needs to
+  be looking at the very last version of the type that is being changed
+  or deleted. The same will be the case for lexical entries
+
+- Some parts of the ontology are off-limits. No editing of the top
+  types like [[Event]] and [[Functional Entity]].
+
+- No rollback mechanism for each editor, but there is going to be a
+  changelist that can be consulted.
+
+- Editing the Ontology may be limited to a few people only.
+
+
+2. Editing Tool Features
+------------------------
+
+Here's a list of things that the BSO-editor will provide (no
+screenshots yet):
+
+
+- The Browser Itself
+
+Will remain a lot like it is now, but with added links and buttons for
+editing. The added links and buttons will launch, in separate
+windows, the forms listed below. An alternative would be to open up
+the forms in a separate frame, I'll have to think this over.
+
+In addition, the tree can be collapsed and expanded.
+
+
+- AddEntry form
+
+Launched from a button, could be sensitive to type selected in the
+browser at the time of the button click, in which case the type will
+already be filled in.
+
+Add an entry by filling in the values of required fields. This form
+will also allow supplying a file with entries in a tab-separated form
+(or some other format that makes sense like XML) for batch entry
+creation.
+
+This form will do some validity checking either through Javascript or
+by the server. This is the case for all edit and create forms below.
+
+
+- EditEntry form
+
+Launched by double-clicking an entry.
+
+Change values of the entry or delete the entry. 
+
+
+- EditEntries form
+
+Launched from a menu.
+
+Allows you to upload a file with entries that need to be deleted
+(entries defined by stem and type). Perhaps also allow supplying a
+file with changes to lexical entries.
+
+
+- AddType form
+
+Launched from a button, could be sensitive to type selected in the
+browser at the time of the button click, in which case the type will
+already be filled in as a super type.
+
+
+- EditType form
+
+Launched by double-clicking a type.
+
+Edit or delete a type. If type is deleted, should ask for a landing
+place for all associated entries (including those of subtypes). If
+types are edited, the ontology will always be left in a consistent
+state. Other people may still view old information, but will be locked
+for editing purposes. 
+
+
+- TypeOrEntryChanged
+
+Not editable. Pops up when a user selects a linked type or entry that
+does not exist anymore.
+
+
+- ChangeList
+
+Launched from a menu.
+
+Not editable, just there to inform the editor.
+
+
+
+3. Design Issues
+----------------
+
+We will take the current BSO browser as point of departure, adding
+editing functionality as appropriate.
+
+Coders will be Catherine, Amber, Anna and Marc.
+
+Code transfer and walk through will happen some time between turkey
+day and red-nosed reindeer day. 
+
+
+4. Some Nuts and Bolts
+----------------------
+
+The table Structure can be optimized a bit but this is not a pressing
+issue, the Python interface to it is flawless, says Catherine. 
+
+The core modules shouldn't need a lot of editing.
